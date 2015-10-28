@@ -24,9 +24,9 @@ class TestSpider(scrapy.Spider):
 		'''
 
 		item = AmazItem()
-		item['asin'] = response.xpath('//input[@name="ASIN.0"]/@value').extract_first()
-		item['title'] =	response.xpath('//span[@id="btAsinTitle"]/span/text()').extract_first()
-		item['price'] = response.xpath('//b[@class="priceLarge"]/text()').extract_first()
+		item['asin'] = response.xpath('//input[@name="ASIN.0"]/@value').extract_first().strip()
+		item['title'] =	response.xpath('//span[@id="btAsinTitle"]/span/text()').extract_first().strip()
+		item['price'] = response.xpath('//b[@class="priceLarge"]/text()').extract_first().strip()
 		'''
 		item = AmazItem()
 		item['asin'] = response.xpath('//input[@name="ASIN.0"]/@value').re('\S+')
@@ -36,7 +36,7 @@ class TestSpider(scrapy.Spider):
 		yield item
 
 
-		asins = sel.xpath('//body').re('B0\w\w\w\w\w\w\w\w')
+		asins = sel.xpath('//body').re('B\w\w\w\w\w\w\w\w\w')
 
 
 
