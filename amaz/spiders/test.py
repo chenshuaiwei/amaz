@@ -36,7 +36,7 @@ class TestSpider(scrapy.Spider):
 		yield item
 
 
-		asins = sel.xpath('//body').re('B\w\w\w\w\w\w\w\w\w')
+		asins = sel.xpath('//body').re('B0\w\w\w\w\w\w\w\w')
 
 
 
