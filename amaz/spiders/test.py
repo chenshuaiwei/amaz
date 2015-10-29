@@ -11,7 +11,7 @@ class TestSpider(scrapy.Spider):
 	download_delay = 1
 	allowed_domains = ["amazon.cn"]
 	start_urls = (
-		'http://www.amazon.cn/gp/product/B00OZIDK6E/',
+		'http://www.amazon.cn/gp/product/B00TMX3K0I/',
 	)
 
 	def parse(self, response):
