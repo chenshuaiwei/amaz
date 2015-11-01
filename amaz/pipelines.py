@@ -58,7 +58,6 @@ class AmazPipeline(object):
 
         query = self.dbpool.runInteraction(self._conditional_insert, item)
 
-
         return item
 
     def _conditional_insert(self, tx, item):

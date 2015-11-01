@@ -16,29 +16,15 @@ class TestSpider(scrapy.Spider):
 
 	def parse(self, response):
 		sel = Selector(response)
-		'''
-		for asin in asins:
-			item = AmazItem()
-			item['asin'] = asin
-			yield item
-		'''
 
 		item = AmazItem()
 		item['asin'] = response.xpath('//input[@name="ASIN.0"]/@value').extract_first().strip()
 		item['title'] =	response.xpath('//span[@id="btAsinTitle"]/span/text()').extract_first().strip()
 		item['price'] = response.xpath('//b[@class="priceLarge"]/text()').extract_first().strip()
-		'''
-		item = AmazItem()
-		item['asin'] = response.xpath('//input[@name="ASIN.0"]/@value').re('\S+')
-		item['title'] =	response.xpath('//span[@id="btAsinTitle"]/span/text()').re('\S+')
-		item['price'] = response.xpath('//b[@class="priceLarge"]/text()').re('\S+')
-		'''
 		yield item
 
 
 		asins = sel.xpath('//body').re('B0\w\w\w\w\w\w\w\w')
-
-
 
 		for asin in asins:
     			asin = "http://www.amazon.cn/gp/product/" + asin
