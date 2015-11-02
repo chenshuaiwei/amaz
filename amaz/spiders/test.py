@@ -8,7 +8,7 @@ import re
 
 class TestSpider(scrapy.Spider):
 	name = "test"
-	download_delay = 1
+	download_delay = 0.1
 	allowed_domains = ["amazon.cn"]
 	start_urls = (
 		'http://www.amazon.cn/gp/product/B00TMX3K0I/',
@@ -29,5 +29,3 @@ class TestSpider(scrapy.Spider):
 		for asin in asins:
     			asin = "http://www.amazon.cn/gp/product/" + asin
     			yield Request(asin, callback=self.parse)
-
-

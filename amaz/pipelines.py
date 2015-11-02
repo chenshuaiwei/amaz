@@ -25,18 +25,6 @@ class DuplicatesPipeline(object):
             self.ids_seen.add(item['asin'])
             return item
 
-'''
-class JsonWriterPipeline(object):
-
-    def __init__(self):
-        self.file = codecs.open('amaz_data_utf8.json', 'wb', encoding='utf-8')
-
-    def process_item(self, item, spider):
-        line = json.dumps(dict(item)) + ",\n"
-        self.file.write(line)
-        return item
-
-'''
 class AmazPipeline(object):
 
     def __init__(self):
